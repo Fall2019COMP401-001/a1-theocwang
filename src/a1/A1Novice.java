@@ -10,5 +10,9 @@ public class A1Novice {
 
 		// Your code follows here.
 		
+		int	i = sc.nextInt();
+		System.out.println(s.next());
+		s.close();
+		
 	}
 }
