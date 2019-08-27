@@ -40,6 +40,9 @@ public class A1Novice {
 		
 				// Number of each item bought
 				int count = scan.nextInt();
+				
+				// Name of each item
+				String item = scan.next();
 		
 				// Price of items
 				double price = scan.nextDouble();
@@ -50,6 +53,7 @@ public class A1Novice {
 				newtotal = total;
 				
 				y++;
+				
 			}
 			
 			// Create new array for prices
