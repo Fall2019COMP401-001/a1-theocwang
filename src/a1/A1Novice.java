@@ -13,18 +13,16 @@ public class A1Novice {
 		// Set up while loops
 		int x = 0;
 		int y = 0;
-		
-		// Set up some variables and arrays outside the loops 
-		double newtotal = 0;
-		double[] newprices = new double[0];
+		double z = 0;
 		
 		// Numerical data first
 		int customers = scan.nextInt();
 		
 		// While loop; will exit when x is greater than the number of customers
-		while (x<=customers)
+		while (x<customers)
 		{
-		
+			y = 0;
+			
 			// Customer first name
 			String fname = scan.next();
 		
@@ -33,11 +31,13 @@ public class A1Novice {
 		
 			// Number of unique items bought by customer
 			int items = scan.nextInt();
+			
+			z = 0;
 		
 			// 2nd while loop
-			while (y<=items)
+			while (y<items)
 			{
-		
+				
 				// Number of each item bought
 				int count = scan.nextInt();
 				
@@ -50,43 +50,21 @@ public class A1Novice {
 				// Get the price of each item
 				double total = count*price;
 				
-				newtotal = total;
+				z += total;
 				
 				y++;
-				
 			}
-			
-			// Create new array for prices
-			double[] prices = new double[items];
-	
-			// Enter values into array using for loop
-			int i=0; 
-			while (i>=0) {
-				prices[i] = newtotal;
-				i++;
-		
-			// Close scanner
-			scan.close();
-				
-			}		
-		newprices = prices;	
-			
-		// Summing values in array
-		double sumprice = 0;
-		for (double z: newprices) {
-			sumprice += z;
-		}
+
 			
 		// Converting double values to string values	
-		String rsumprice = String.format("%.2f", sumprice);
+		String rsumprice = String.format("%.2f", z);
 		
 		
-		System.out.println(String.valueOf(fname.charAt(0)) + lname + rsumprice);
+		System.out.println(String.valueOf(fname.charAt(0))+"." + " " + lname + ":" + " " + rsumprice);
 		
 		x++;
 		
 		}
-		
-		
+		scan.close();
 	}
 }
