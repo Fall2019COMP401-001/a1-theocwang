@@ -10,9 +10,80 @@ public class A1Novice {
 
 		// Your code follows here.
 		
-		int	i = sc.nextInt();
-		System.out.println(s.next());
-		s.close();
+		// Set up while loops
+		int x = 0;
+		int y = 0;
+		
+		// Set up some variables and arrays outside the loops 
+		double newtotal = 0;
+		double[] newprices = new double[0];
+		
+		// Numerical data first
+		int customers = scan.nextInt();
+		
+		// While loop; will exit when x is greater than 3
+		while (x<=customers)
+		{
+		
+			// Customer first name
+			String fname = scan.next();
+		
+			// Customer last name
+			String lname = scan.next();
+		
+			// Number of unique items bought by customer
+			int items = scan.nextInt();
+		
+			// 2nd while loop
+			while (y<=items)
+			{
+		
+				// Number of each item bought
+				int count = scan.nextInt();
+		
+				// Name of item bought
+				String itemname = scan.next();
+		
+				// Price of items
+				double price = scan.nextDouble();
+		
+				// Get the price of each item
+				double total = count*price;
+				
+				newtotal = total;
+				}
+			
+			// Create new array for prices
+			double[] prices = new double[items];
+	
+			// Enter values into array using for loop
+			int i=0; 
+			while (i>=0) {
+				prices[i] = newtotal;
+				i++;
+		
+			// Close scanner
+			scan.close();
+				
+			}		
+		newprices = prices;	
+			
+		// Summing values in array
+		double sumprice = 0;
+		for (double z: newprices) {
+			sumprice += z;
+		}
+			
+		// Converting double values to string values	
+		String rsumprice = String.format("%.2f", sumprice);
+		
+		
+		System.out.println(String.valueOf(fname.charAt(0)) + lname + rsumprice);
+		
+		x++;
+		
+		}
+		
 		
 	}
 }
