@@ -21,7 +21,7 @@ public class A1Novice {
 		// Numerical data first
 		int customers = scan.nextInt();
 		
-		// While loop; will exit when x is greater than 3
+		// While loop; will exit when x is greater than the number of customers
 		while (x<=customers)
 		{
 		
@@ -41,9 +41,6 @@ public class A1Novice {
 				// Number of each item bought
 				int count = scan.nextInt();
 		
-				// Name of item bought
-				String itemname = scan.next();
-		
 				// Price of items
 				double price = scan.nextDouble();
 		
@@ -51,7 +48,9 @@ public class A1Novice {
 				double total = count*price;
 				
 				newtotal = total;
-				}
+				
+				y++;
+			}
 			
 			// Create new array for prices
 			double[] prices = new double[items];
