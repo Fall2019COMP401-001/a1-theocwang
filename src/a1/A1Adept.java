@@ -46,29 +46,30 @@ public class A1Adept {
 		// Create an array to store prices of items customers bought
 		double[] shoppingTrip = new double[customers];
 		
+		// Create an array to store sums of prices for each customer
+		double[] sums = new double[customers];
+		
 		// While loop to keep scanning each customer and their items
 		while (numberCustomers < customers) {
 			
 			// Scan customer first name into array
-			int a = 0;
-			a = v;
-			while (a < firstNames.length) {
-				firstNames[a] = scan.next();
+			for (int a = 0; a < 1; a++) {
+				firstNames[v] = scan.next();
 			}
 			
 			// Scan customer last name into array
-			int b = 0;
-			b = v;
-			while (b < lastNames.length) {
-				lastNames[b] = scan.next();
+			for (int b = 0; b < 1; b++) {
+				lastNames[v] = scan.next();
 			}
 			
 			// Scan number of items each customer bought
 			int itemCount = scan.nextInt();
 			
-			// Set up variable z and w outside loops
+			// Set up necessary variables outside loops
 			int z = 0;
 			int w = 0;
+			int d = 0;
+			int u = 0;
 
 			// While loop to keep scanning each item each customer bought
 			while (numberItems < itemCount) {
@@ -79,7 +80,7 @@ public class A1Adept {
 				// Scan name of each item bought
 				String itemNameBought = scan.next();
 				
-				// Calculate the total cost for each customer
+				// Calculate the total cost for each customer per item quantity
 				z = w;
 				for (int x = 0; x < customers; x++) {
 					for (int y = 0; y <priceTable.length; y++) {
@@ -92,17 +93,29 @@ public class A1Adept {
 						}
 					}
 				}
+				// Sum up each customer's purchases
+				int sum = 0;
+				for (int c = 0; c < shoppingTrip.length; c++) {
+					sum += shoppingTrip[c];
+				}
+				// Set up while loop to add sums to sums array
+				d = u;
+				while (d < shoppingTrip.length) {
+					sums[d] = sum;
+					u++;
+				}
+				
 				numberItems++;
 				w++;
 			}
-			numberCustomers++;	
+			numberCustomers++;
 			v++;
 		}
 		
 		// For loop to find largest amount spent by comparing all elements to each other
 		int i = 0;
 		int j = 0;
-		double max = shoppingTrip[0];
+		double max = sums[0];
 		for (i = 0; i < shoppingTrip.length; i++) {
 			if (shoppingTrip[i] > max) {
 				max = shoppingTrip[i];
@@ -110,7 +123,7 @@ public class A1Adept {
 		}
 		
 		// For loop to find smallest amount spent by comparing all elements in array
-		double min = shoppingTrip[0];
+		double min = sums[0];
 		for (j = 0; j < shoppingTrip.length; j++) {
 			if (shoppingTrip[j] < min) {
 				min = shoppingTrip[j];
@@ -125,10 +138,10 @@ public class A1Adept {
 		double average = sum / shoppingTrip.length;
 		
 		// Biggest Spender
-		System.out.println("Biggest: " + firstNames[i-1] + " " + lastNames[i-1] + " " + "(" + max + ")");
+		System.out.println("Biggest: " + firstNames[i] + " " + lastNames[i] + " " + "(" + max + ")");
 		
 		// Smallest Spender
-		System.out.println("Smallest: " + firstNames[j-1] + " " + lastNames[j-1] + " " + "(" + min + ")");
+		System.out.println("Smallest: " + firstNames[j] + " " + lastNames[j] + " " + "(" + min + ")");
 	
 		// Average amount spent by customers
 		System.out.println("Average: " + average);
