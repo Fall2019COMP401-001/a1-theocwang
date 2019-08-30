@@ -31,7 +31,6 @@ public class A1Adept {
 				name_priceTable[x][1] = scan.nextDouble();
 				numberCount++;
 				}
-			
 		}
 		
 		// Scan number of customers and set up variable to keep count
@@ -40,9 +39,6 @@ public class A1Adept {
 		
 		// Create an array to store the names of customers
 		String[][] names = new String[customers][2];
-
-		// Create an array to store prices of items customers bought
-		double[] shoppingTrip = new double[customers];
 		
 		// Create an array to store sums of prices for each customer
 		double[] sums = new double[customers];
@@ -62,8 +58,7 @@ public class A1Adept {
 			// Set up necessary variables outside loops
 			int z = 0;
 			int w = 0;
-			int d = 0;
-			int u = 0;
+			double totalSum = 0;
 
 			// While loop to keep scanning each item each customer bought
 			while (numberItems < itemCount) {
@@ -81,25 +76,13 @@ public class A1Adept {
 						String str = (name_priceTable[y][1]).toString();
 						if (name_priceTable[y][0] == itemNameBought) {
 							double totalItemCost = Double.valueOf(str) * productNumber;
-							while (z < shoppingTrip.length) {
-								shoppingTrip[z] = totalItemCost;
-								z++;
+							totalSum += totalItemCost;
+							while (z < customers) {
+								sums[z]= totalSum;
 							}
 						}
 					}
-				}
-				// Sum up each customer's purchases
-				int sum = 0;
-				for (int c = 0; c < shoppingTrip.length; c++) {
-					sum += shoppingTrip[c];
-				}
-				// Set up while loop to add sums to sums array
-				d = u;
-				while (d < shoppingTrip.length) {
-					sums[d] = sum;
-					u++;
-				}
-				
+				}	
 				numberItems++;
 				w++;
 			}
