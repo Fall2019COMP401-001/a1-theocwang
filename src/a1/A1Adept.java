@@ -6,126 +6,94 @@ import java.util.Scanner;
 public class A1Adept {
 
 	public static void main(String[] args) {
-		
+
 		Scanner scan = new Scanner(System.in);
 
 		// Your code follows here.
-		
-		// Space for any possible variables I need
-		int numberCount = 0;
-		int numberCustomers = 0;
-		int numberItems = 0;
-		
-		// Scan number of items in store
-		int count = scan.nextInt();
-		
-		// Create an array to store names and prices of products
-		Object[][] name_priceTable = new Object[count][2];
-		
-		// While loop to keep scanning all items in store
-		while (numberCount < count) {
-			
-			// Scan name and price of item into array
-			for (int x = 0; x < name_priceTable.length; x++) {
-				name_priceTable[x][0] = scan.next(); 
-				name_priceTable[x][1] = scan.nextDouble();
-				numberCount++;
-				}
-		}
-		
-		// Scan number of customers and set up variable to keep count
-		int customers = scan.nextInt();
-		int v = 0;
-		
-		// Create an array to store the names of customers
-		String[][] names = new String[customers][2];
-		
-		// Create an array to store sums of prices for each customer
-		double[] sums = new double[customers];
-		
-		// While loop to keep scanning each customer and their items
-		while (numberCustomers < customers) {
-			
-			// Scan customer first name into array
-			for (int a = 0; a < 1; a++) {
-				names[v][0] = scan.next();
-				names[v][1] = scan.next();
-			}
-			
-			// Scan number of items each customer bought
-			int itemCount = scan.nextInt();
-			
-			// Set up necessary variables outside loops
-			int z = 0;
-			int w = 0;
-			double totalSum = 0;
 
-			// While loop to keep scanning each item each customer bought
-			while (numberItems < itemCount) {
-				
-				// Scan number of each item bought
-				int productNumber = scan.nextInt();
-				
-				// Scan name of each item bought
-				String itemNameBought = scan.next();
-				
-				// Calculate the total cost for each customer per item quantity
-				z = w;
-				for (int x = 0; x < customers; x++) {
-					for (int y = 0; y <name_priceTable.length; y++) {
-						String str = (name_priceTable[y][1]).toString();
-						if (name_priceTable[y][0] == itemNameBought) {
-							double totalItemCost = Double.valueOf(str) * productNumber;
-							totalSum += totalItemCost;
-							while (z < customers) {
-								sums[z]= totalSum;
-							}
-						}
-					}
-				}	
-				numberItems++;
-				w++;
-			}
-			numberCustomers++;
-			v++;
+		// Scan the number of items in the store
+		int itemCount = scan.nextInt();
+
+		// Scan the name and prices of each item in the store
+		// First create an array for the items
+		String itemNameList[] = new String[itemCount];
+		double itemPriceList[] = new double[itemCount];
+		for (int x = 0; x < itemCount; x++) {
+			itemNameList[x] = scan.next();
+			itemPriceList[x] = scan.nextDouble();
 		}
-		
-		// For loop to find largest amount spent by comparing all elements to each other
-		int i = 0;
-		int j = 0;
-		double max = sums[0];
-		for (i = 0; i < sums.length; i++) {
-			if (sums[i] > max) {
-				max = sums[i];
+
+		// Scan the number of customers
+		int customerCount = scan.nextInt();
+
+		// For each customer, scan their names and the number
+		// of items they have bought
+		int a = 0;
+		int z = 0;
+		int w = 0;
+		double totalPrice = 0;
+		// First, create arrays for the customer's name and their price sums 
+		String customerFirstNameList[] = new String[customerCount];
+		String customerLastNameList[] = new String[customerCount];
+		double customerSumList[] = new double[customerCount];
+		while (a < customerCount) {
+			customerFirstNameList[a] = scan.next();
+			customerLastNameList[a] = scan.next();
+			// Scan the number of items each person has
+			int buyingCount = scan.nextInt();
+			// Another loop must be created for the items
+			// Create an array for the customer's shopping trip price
+			while (z < buyingCount) {
+				int individualCount = scan.nextInt();
+				String itemName = scan.next();
+				if (itemName.equals(itemNameList[z])) {
+					double total = individualCount * itemPriceList[z];
+					totalPrice += total;
+				}
+				z++;
+				}
+			while (w < buyingCount) {
+				customerSumList[w] = totalPrice;
 			}
+			w++;
+			a++;
 		}
+		scan.close();
 		
-		// For loop to find smallest amount spent by comparing all elements in array
-		double min = sums[0];
-		for (j = 0; j < sums.length; j++) {
-			if (sums[j] < min) {
-				min = sums[j];
-			}
-		}
-		
-		// Average amount spent calculated by summing all prices and dividing by number of customers
+		// Find the average amount spent by first finding the sum
+		// of the money spent by all customers
 		double sum = 0;
-		for (double element: sums) {
+		for (double element: customerSumList) {
 			sum += element;
 		}
-		double average = sum / sums.length;
 		
+		// Now find the average by dividing by the number of customers
+		double average = sum / customerSumList.length;
+		
+		// Find the minimum amount spent
+		int i = 0;
+		double min = customerSumList[0];
+		for (i = 0; i < customerSumList.length; i++) {
+			if (customerSumList[i] < min) {
+				min = customerSumList[i];
+			}
+		}
+				
+		// Find the maximum amount spent
+		int j = 0;
+		double max = customerSumList[0];
+		for (j = 0; j < customerSumList.length; j++) {
+			if (customerSumList[j] > max) {
+				min = customerSumList[j];
+			}
+		}
 		// Biggest Spender
-		System.out.println("Biggest: " + names[i][0] + " " + names[i][1] + " " + "(" + max + ")");
-		
+		System.out.println("Biggest: " + customerFirstNameList[j] + " " + customerLastNameList[j] + " " + "(" + max + ")");
+						
 		// Smallest Spender
-		System.out.println("Smallest: " + names[j][0] + " " + names[j][1] + " " + "(" + min + ")");
-	
+		System.out.println("Smallest: " + customerFirstNameList[i] + " " + customerLastNameList[i] + " " + "(" + min + ")");
+					
 		// Average amount spent by customers
 		System.out.println("Average: " + average);
-		
-		scan.close();
 	}
-	
 }
-	
