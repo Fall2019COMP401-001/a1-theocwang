@@ -116,26 +116,26 @@ public class A1Adept {
 		int i = 0;
 		int j = 0;
 		double max = sums[0];
-		for (i = 0; i < shoppingTrip.length; i++) {
-			if (shoppingTrip[i] > max) {
-				max = shoppingTrip[i];
+		for (i = 0; i < sums.length; i++) {
+			if (sums[i] > max) {
+				max = sums[i];
 			}
 		}
 		
 		// For loop to find smallest amount spent by comparing all elements in array
 		double min = sums[0];
-		for (j = 0; j < shoppingTrip.length; j++) {
-			if (shoppingTrip[j] < min) {
-				min = shoppingTrip[j];
+		for (j = 0; j < sums.length; j++) {
+			if (sums[j] < min) {
+				min = sums[j];
 			}
 		}
 		
 		// Average amount spent calculated by summing all prices and dividing by number of customers
 		double sum = 0;
-		for (double element: shoppingTrip) {
+		for (double element: sums) {
 			sum += element;
 		}
-		double average = sum / shoppingTrip.length;
+		double average = sum / sums.length;
 		
 		// Biggest Spender
 		System.out.println("Biggest: " + firstNames[i] + " " + lastNames[i] + " " + "(" + max + ")");
