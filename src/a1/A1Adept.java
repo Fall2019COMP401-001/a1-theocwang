@@ -36,16 +36,18 @@ public class A1Adept {
 		String customerFirstNameList[] = new String[customerCount];
 		String customerLastNameList[] = new String[customerCount];
 		double customerSumList[] = new double[customerCount];
+		// Create while loop to input each person's name into the created arrays
 		while (a < customerCount) {
 			customerFirstNameList[a] = scan.next();
 			customerLastNameList[a] = scan.next();
 			// Scan the number of items each person has
 			int buyingCount = scan.nextInt();
 			// Another loop must be created for the items
-			// Create an array for the customer's shopping trip price
 			z = 0;
 			w = 0;
 			double totalPrice = 0;
+			// Input and calculate the total cost of each person's shopping trip after
+			// each grocery purchase
 			while (z < buyingCount) {
 				int individualCount = scan.nextInt();
 				String itemName = scan.next();
@@ -72,7 +74,8 @@ public class A1Adept {
 		// Now find the average by dividing by the number of customers
 		double average = sum / customerSumList.length;
 
-		// Find the minimum amount spent
+		// Find the minimum amount spent by iterating through customer
+		// sum list
 		int minIndex = 0;
 		double min = customerSumList[0];
 		for (int i = 0; i < customerSumList.length; i++) {
@@ -82,7 +85,8 @@ public class A1Adept {
 			}
 		}
 
-		// Find the maximum amount spent
+		// Find the maximum amount spent by iterating through customer
+		// sum list
 		int maxIndex = 0;
 		double max = customerSumList[0];
 		for (int j = 0; j < customerSumList.length; j++) {
