@@ -42,7 +42,7 @@ public class A1Novice {
 				int count = scan.nextInt();
 				
 				// Name of each item
-				String item = scan.next();
+				scan.next();
 		
 				// Price of items
 				double price = scan.nextDouble();
