@@ -31,8 +31,8 @@ public class A1Adept {
 		int a = 0;
 		int z = 0;
 		int w = 0;
-		double totalPrice = 0;
-		// First, create arrays for the customer's name and their price sums 
+		int index = -1;
+		// First, create arrays for the customer's name and their price sums
 		String customerFirstNameList[] = new String[customerCount];
 		String customerLastNameList[] = new String[customerCount];
 		double customerSumList[] = new double[customerCount];
@@ -43,57 +43,64 @@ public class A1Adept {
 			int buyingCount = scan.nextInt();
 			// Another loop must be created for the items
 			// Create an array for the customer's shopping trip price
+			z = 0;
+			w = 0;
+			double totalPrice = 0;
 			while (z < buyingCount) {
 				int individualCount = scan.nextInt();
 				String itemName = scan.next();
-				if (itemName.equals(itemNameList[z])) {
-					double total = individualCount * itemPriceList[z];
-					totalPrice += total;
-				}
+				index = Arrays.asList(itemNameList).indexOf(itemName);
+				double total = individualCount * itemPriceList[index];
+				totalPrice += total;
 				z++;
-				}
-			while (w < buyingCount) {
-				customerSumList[w] = totalPrice;
 			}
-			w++;
+			while (w < buyingCount) {
+				customerSumList[a] = totalPrice;
+				w++;
+			}
 			a++;
 		}
 		scan.close();
-		
+
 		// Find the average amount spent by first finding the sum
 		// of the money spent by all customers
 		double sum = 0;
-		for (double element: customerSumList) {
+		for (double element : customerSumList) {
 			sum += element;
 		}
-		
+
 		// Now find the average by dividing by the number of customers
 		double average = sum / customerSumList.length;
-		
+
 		// Find the minimum amount spent
-		int i = 0;
+		int minIndex = 0;
 		double min = customerSumList[0];
-		for (i = 0; i < customerSumList.length; i++) {
+		for (int i = 0; i < customerSumList.length; i++) {
 			if (customerSumList[i] < min) {
 				min = customerSumList[i];
+				minIndex = i;
 			}
 		}
-				
+
 		// Find the maximum amount spent
-		int j = 0;
+		int maxIndex = 0;
 		double max = customerSumList[0];
-		for (j = 0; j < customerSumList.length; j++) {
+		for (int j = 0; j < customerSumList.length; j++) {
 			if (customerSumList[j] > max) {
-				min = customerSumList[j];
+				max = customerSumList[j];
+				maxIndex = j;
 			}
 		}
+		
 		// Biggest Spender
-		System.out.println("Biggest: " + customerFirstNameList[j] + " " + customerLastNameList[j] + " " + "(" + max + ")");
-						
+		System.out.println(
+				"Biggest: " + customerFirstNameList[maxIndex] + " " + customerLastNameList[maxIndex] + " " + "(" + String.format("%.2f", max) + ")");
+
 		// Smallest Spender
-		System.out.println("Smallest: " + customerFirstNameList[i] + " " + customerLastNameList[i] + " " + "(" + min + ")");
-					
+		System.out.println(
+				"Smallest: " + customerFirstNameList[minIndex] + " " + customerLastNameList[minIndex] + " " + "(" + String.format("%.2f", min) + ")");
+
 		// Average amount spent by customers
-		System.out.println("Average: " + average);
+		System.out.println("Average: " + String.format("%.2f", average));
 	}
 }
