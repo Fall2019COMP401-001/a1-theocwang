@@ -47,23 +47,29 @@ public class A1Jedi {
 				buyingItemCount = 0;
 				int individualCount = scan.nextInt();
 				String itemName = scan.next();
-				buyingCustomerCount++;
-				buyingItemCount += individualCount;
 				index = Arrays.asList(itemNameList).indexOf(itemName);
-				customerCountList[index] += buyingCustomerCount;
-				itemCountList[index] += buyingItemCount;
-				z++;
-					}
-			a++;
+				if (customerCountList[index] >= 2) {
+					buyingItemCount += individualCount;
+					itemCountList[index] += buyingItemCount;
+					z++;
+				} else {
+					buyingCustomerCount++;
+					buyingItemCount += individualCount;
+					customerCountList[index] += buyingCustomerCount;
+					itemCountList[index] += buyingItemCount;
+					z++;
+				}
 			}
+			a++;
+		}
 		scan.close();
 		
 		for (int e = 0; e < itemNameList.length; e++) {
 			if (customerCountList[e] == 0) {
 				System.out.println("No customers bought " + itemNameList[e]);
-			} else {
+		} else {
 			System.out.println(customerCountList[e] + " customers bought " + itemCountList[e] + " " + itemNameList[e]);
-			}
+		}
 		}
 	}
 }
