@@ -50,7 +50,7 @@ public class A1Jedi {
 				int individualCount = scan.nextInt();
 				String itemName = scan.next();
 				index = Arrays.asList(itemNameList).indexOf(itemName);
-				if (itemID[index] >= 1) {
+				if (itemID[index] > 0) {
 					buyingItemCount += individualCount;
 					itemCountList[index] += buyingItemCount;
 					z++;
