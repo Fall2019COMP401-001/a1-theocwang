@@ -44,6 +44,7 @@ public class A1Jedi {
 			// Reset variable values for while loop
 			z = 0;
 			itemID[index] = 0;
+			Arrays.fill(itemID, 0);
 			while (z < buyingCount) {
 				buyingCustomerCount = 0;
 				buyingItemCount = 0;
