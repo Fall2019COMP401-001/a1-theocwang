@@ -28,12 +28,13 @@ public class A1Jedi {
 		// how many customers bought that item
 		int a = 0;
 		int z = 0;
-		int index = -1;
+		int index = 0;
 		int buyingCustomerCount = 0;
 		int buyingItemCount = 0;
 		// First, create arrays for the customer and item counter
 		int customerCountList[] = new int[itemNameList.length];
 		int itemCountList[] = new int[itemNameList.length];
+		int itemID[] = new int[itemNameList.length];
 		while (a < customerCount) {
 			scan.next();   // Scan the first name of each customer
 			scan.next();   // Scan the last name of each customer
@@ -42,13 +43,14 @@ public class A1Jedi {
 			// Another loop must be created for the items
 			// Reset variable values for while loop
 			z = 0;
+			itemID[index] = 0;
 			while (z < buyingCount) {
 				buyingCustomerCount = 0;
 				buyingItemCount = 0;
 				int individualCount = scan.nextInt();
 				String itemName = scan.next();
 				index = Arrays.asList(itemNameList).indexOf(itemName);
-				if (customerCountList[index] >= 2) {
+				if (itemID[index] >= 1) {
 					buyingItemCount += individualCount;
 					itemCountList[index] += buyingItemCount;
 					z++;
@@ -57,6 +59,7 @@ public class A1Jedi {
 					buyingItemCount += individualCount;
 					customerCountList[index] += buyingCustomerCount;
 					itemCountList[index] += buyingItemCount;
+					itemID[index]++;
 					z++;
 				}
 			}
